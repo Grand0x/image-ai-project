@@ -1,20 +1,21 @@
-version: '3.8'
-
 services:
   keycloak:
     image: quay.io/keycloak/keycloak:24.0
-    command: start-dev
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_DB: postgres
       KC_DB_URL_HOST: db
-      KC_DB_USERNAME: postgres
-      KC_DB_PASSWORD: postgres
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: password
     ports:
       - "8080:8080"
     depends_on:
       - db
+    volumes:
+      - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
+    command: start-dev --import-realm
 
   db:
     image: postgres:15
@@ -23,6 +24,7 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
 
@@ -42,8 +44,8 @@ services:
       - ./ml_service:/app
     ports:
       - "5000:5000"
+    env_file:
+      - .env
 
 volumes:
   db_data:
-  - ./keycloak/realm-export.json:/opt/keycloak/data/import/realm-export.json
-command: start-dev --import-realm

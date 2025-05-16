@@ -1,0 +1,111 @@
+# Fichiers d'environnement
+.env
+.env.*
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+venv/
+env/
+ENV/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# FastAPI / Uvicorn
+*.log
+instance/
+*.sqlite3
+*.db
+
+# Node.js / Next.js
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Docker
+*.pid
+*.pid.lock
+docker-compose.override.yml
+docker-compose.override.yaml
+docker-compose.local.yml
+docker-compose.local.yaml
+
+# PostgreSQL
+*.sql
+*.dump
+*.pgdata
+pgdata/
+db_data/
+
+# Keycloak
+keycloak/data/
+keycloak/themes/
+keycloak/standalone/data/
+keycloak/standalone/tmp/
+keycloak/standalone/log/
+
+# Migrations / Alembic
+migrations/
+alembic.ini
+
+# Tests / Coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+pytest_cache/
+*.cover
+coverage.xml
+nosetests.xml
+test-results.xml
+junit-*.xml
+
+# IDEs / Éditeurs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# MacOS / Linux / Windows
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.bak
+*.swp
+*.swo
+*.~lock.*
+*.tmp
+*.temp
+*.log
+
+# Fichiers sensibles
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.cer
+*.der
+*.jks
+*.keystore
+*.p7b
+*.p7c
+*.p8
+*.asc
+*.gpg
+*.env.local
+*.env.production
+*.env.development
+*.env.test
