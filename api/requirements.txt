@@ -5,3 +5,4 @@ psycopg2-binary
 httpx
 PyJWT
 python-jose[cryptography]
+python-multipart

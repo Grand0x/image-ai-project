@@ -1,6 +1,6 @@
 up:
 	docker compose up --build
-	
+
 down:
 	docker compose down
 
@@ -18,3 +18,15 @@ logs:
 
 clean:
 	docker compose down -v && docker system prune -f
+
+build-api:
+	docker compose build api
+
+up-api:
+	docker compose up --no-deps --build api
+
+build-ml:
+	docker compose build ml_service
+
+up-ml:
+	docker compose up --no-deps --build ml_service

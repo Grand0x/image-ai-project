@@ -2,6 +2,7 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, Query, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import shutil, hashlib, os
+from app.utils import get_current_user
 
 from app.database import SessionLocal, engine, Base
 from app.models import ImageMetadata
