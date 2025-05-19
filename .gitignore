@@ -109,3 +109,5 @@ ehthumbs.db
 *.env.production
 *.env.development
 *.env.test
+
+tests/

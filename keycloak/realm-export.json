@@ -4,6 +4,7 @@
     "clients": [
       {
         "clientId": "fastapi-backend",
+        "directAccessGrantsEnabled": true,
         "enabled": true,
         "clientAuthenticatorType": "client-secret",
         "secret": "my-secret",
@@ -15,6 +16,7 @@
       {
         "username": "testuser",
         "enabled": true,
+        "emailVerified": true,
         "credentials": [
           {
             "type": "password",
