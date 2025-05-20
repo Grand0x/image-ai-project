@@ -71,6 +71,10 @@ def search_images(q: str = Query(...), db: Session = Depends(get_db)):
         (ImageMetadata.tags.ilike(f"%{q}%"))
     ).all()
 
+@app.get("/images", response_model=list[ImageOut])
+def list_images( db: Session = Depends(get_db)):
+    return db.query(ImageMetadata).all()
+
 @app.get("/me")
 def get_me(user: dict = Depends(get_current_user)):
     return {"username": user.get("preferred_username"), "roles": user.get("realm_access", {}).get("roles", [])}

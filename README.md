@@ -24,6 +24,8 @@ Keycloak (auth) ◀─────┘
 1. **Authentification** : l’utilisateur obtient un token JWT via Keycloak.
 2. **API FastAPI** : vérifie le token, gère la base de données, valide le hash de l’image, et sert d’orchestrateur.
 3. **Microservice IA** : traite l’image via Hugging Face (modèle Llama-4-Maverick-17B-128E-Instruct), renvoie description + tags.
+4. **Dashboard (Next.js)** : frontend React/SSR sur port 3000, interagit avec : Keycloak pour l’authentification, FastAPI pour listing, recherche et upload
+
 
 ---
 
@@ -33,6 +35,8 @@ Keycloak (auth) ◀─────┘
 * **Make** (facultatif, pour les commandes rapides)
 * **Git** pour cloner le projet
 * Un compte Hugging Face avec une **clé API** (scopes : appeler l’Inference API)
+* **Node.js** v21 et **pnpm** (ou npm)  
+* Variables d’env. pour le dashboard (cf. section suivante)
 
 ---
 
@@ -52,6 +56,17 @@ Keycloak (auth) ◀─────┘
    ```dotenv
    HUGGINGFACE_API_KEY=hf_votre_cle_api
    ```
+
+   Renseigner les variables pour le dashboard:
+
+   | Nom                           | Usage                                                             | Exposé à      |
+|-------------------------------|-------------------------------------------------------------------|---------------|
+| `CLIENT_ID`                   | Client Keycloak confidentiel (Next.js SSR / API routes)           | Server only   |
+| `CLIENT_SECRET`               | Secret du client confidentiel                                     | Server only   |
+| `NEXT_PUBLIC_CLIENT_ID`       | Client Keycloak public (CSR / OIDC)                               | Client & Server |
+| `NEXT_PUBLIC_KEYCLOAK_URL`    | URL de base de Keycloak (ex : http://keycloak:8080)               | Client & Server |
+| `NEXT_PUBLIC_API_URL`         | URL interne du service FastAPI (ex : http://api:8000)             | Client & Server |
+
 
 3. **Démarrer les services**
 
